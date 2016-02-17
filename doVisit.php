@@ -17,6 +17,12 @@ if (!(strpos($var,'})') !== false)) {
 }
 
 $getCity = stripTojSon($var,$time);
+if($getCity['code']==2){
+	//header('Location: '.$_SERVER['HTTP_REFERER']);
+	//print_r($_SERVER);die();
+	echo "<script>window.location.href=window.location.href</script>";
+}
+
 $city = $getCity['ret']['user']['city'][0]['id'];
 
 

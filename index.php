@@ -59,7 +59,7 @@ $(document).ready(function(){
                     str = "<table border=1 cellpading=0 cellspacing=0><tr><th>Name</th><th>Level</th><th>Attack</th><th>Wisdom</th><th>Defense</th><th>Loyalty</th><th>Vigor</th><th>Maxtroop</th><th>Action</th></tr>";
                     for(ctr=0;ctr<data['ret']['hero'].length;ctr++){
                         //console.log(data['ret']['hero'][ctr]);
-                        str += "<tr><td><img src=http://holycrusades.com/build/img/hero/"+data['ret']['hero'][ctr]['gid']+".jpg /></td><td>"+data['ret']['hero'][ctr]['g']+"</td><td>"+data['ret']['hero'][ctr]['p']+"</td><td>"+data['ret']['hero'][ctr]['i']+"</td><td>"+data['ret']['hero'][ctr]['c1']+"</td><td>"+data['ret']['hero'][ctr]['f']+"</td><td>"+data['ret']['hero'][ctr]['e']+"</td><td>"+data['ret']['hero'][ctr]['c2']+"</td><td><input type='button' value='Arena' data-enhanced='true'></td></tr>";
+                        str += "<tr><td><img src=http://holycrusades.com/build/img/hero/"+data['ret']['hero'][ctr]['gid']+".jpg /></td><td>"+data['ret']['hero'][ctr]['g']+"</td><td>"+data['ret']['hero'][ctr]['p']+"</td><td>"+data['ret']['hero'][ctr]['i']+"</td><td>"+data['ret']['hero'][ctr]['c1']+"</td><td>"+data['ret']['hero'][ctr]['f']+"</td><td>"+data['ret']['hero'][ctr]['e']+"</td><td>"+data['ret']['hero'][ctr]['c2']+"</td><td><a href=\"JavaScript:autoarena(\''+key+'\')\">AutoArena</a></td></tr>";
                     } 
                     str+="</table>";
                     $('#heroList').html(str);
