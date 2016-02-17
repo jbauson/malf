@@ -57,6 +57,7 @@ for($ctr=0;$ctr<count($genList);$ctr++){
 		if (!(strpos($var,'})') !== false)) {
 		    goto visit;
 		}
+		break;
 	}
 }
 #echo "here";
