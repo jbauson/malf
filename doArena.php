@@ -7,12 +7,7 @@ function stripTojSon($json,$time){
 	return json_decode($json,true);
 }
 
-function d($array){
-	echo "<pre>";
-	print_r($array);
-	echo "</pre>";
-	die();
-}
+
 
 function addVigor($id,$key,$city){
 	addVigor:
@@ -103,8 +98,8 @@ for($ctr=0;$ctr<count($getOpponent);$ctr++){
 			goto fight;
 		}
 		if(@$result['ret']['win']>0){
-			echo "Won!";
-		}else{echo "Owned!<br>";}
+			echo "W1n!";
+		}else{echo "Lose!<br>";}
 
 		/*
 		$ex = $ex+$result['ret']['exp'];
@@ -121,5 +116,5 @@ for($ctr=0;$ctr<count($getOpponent);$ctr++){
 		break;
 	}
 }
-
+//header("Refresh: 5; URL=http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 ?>

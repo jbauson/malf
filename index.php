@@ -7,100 +7,10 @@
 <script src="jquery/demos/_assets/js/index.js"></script>
 <script src="jquery/demos/js/jquery.mobile-1.4.5.min.js"></script>
 <style type="text/css">
-table { 
-    color: #333;
-    font-family: Helvetica, Arial, sans-serif;
-    width: 640px; 
-    border-collapse: 
-    collapse; border-spacing: 0; 
-    }
-
-    td, th { 
-    border: 1px solid transparent; /* No more visible border */
-    height: 30px; 
-    transition: all 0.3s;  /* Simple transition for hover effect */
-    }
-
-    th {
-    background: #DFDFDF;  /* Darken header a bit */
-    font-weight: bold;
-    }
-
-    td {
-    background: #FAFAFA;
-    text-align: center;
-    }
-
-    /* Cells in even rows (2,4,6...) are one color */ 
-    tr:nth-child(even) td { background: #F1F1F1; }   
-
-    /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
-    tr:nth-child(odd) td { background: #FEFEFE; }  
-
-    /* tr td:hover { background: #666; color: #FFF; } Hover cell effect! */
+table{color:#333;font-family:Helvetica,Arial,sans-serif;width:640px;border-collapse:collapse;border-spacing:0}td,th{border:1px solid transparent;height:30px;transition:all .3s}th{background:#DFDFDF;font-weight:700}td{background:#FAFAFA;text-align:center}tr:nth-child(even) td{background:#F1F1F1}tr:nth-child(odd) td{background:#FEFEFE}
 </style>
 <script>
-function autovisit(key){
-    $('#visit').html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
-    setInterval(function(){
-                $('#visit').html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
-                $("#visit").load("doVisit.php?key="+key);
-            },5000);
-}
-
-function autoarena(key,hero){
-    $('#arena'+hero).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
-    setInterval(function(){
-                $('#arena'+hero).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
-                $('#arena'+hero).load("doArena.php?key="+key+"&hero="+hero);
-                //console.log('Got it!');
-            },5000);
-}
-
-$(document).ready(function(){
-
-    function loadAllHero(key){
-        $.get("getHero.php",{key: key},
-        function(data, status){
-            if(status=="success"){
-                data = JSON.parse(data);
-                if(data['code']=="0"){
-                    str = "<table border=1 cellpading=0 cellspacing=0><tr><th>Name</th><th>Level</th><th>Attack</th><th>Wisdom</th><th>Defense</th><th>Loyalty</th><th>Vigor</th><th>Maxtroop</th><th>Action</th></tr>";
-                    for(ctr=0;ctr<data['ret']['hero'].length;ctr++){
-                        //console.log(data['ret']['hero'][ctr]);
-                        str += "<tr><td><img src=http://holycrusades.com/build/img/hero/"+data['ret']['hero'][ctr]['gid']+".jpg /></td><td>"+data['ret']['hero'][ctr]['g']+"</td><td>"+data['ret']['hero'][ctr]['p']+"</td><td>"+data['ret']['hero'][ctr]['i']+"</td><td>"+data['ret']['hero'][ctr]['c1']+"</td><td>"+data['ret']['hero'][ctr]['f']+"</td><td>"+data['ret']['hero'][ctr]['e']+"</td><td>"+data['ret']['hero'][ctr]['c2']+"</td><td><a id=\"arena"+ctr+"\"href=\"JavaScript:autoarena(\'"+key+"\',"+ctr+")\">AutoArena</a></td></tr>";
-                    } 
-                    str+="</table>";
-                    $('#heroList').html(str);
-                    $('#login').html('');
-                    $('#response').text('')
-                    $('#visit').html('<br/><br/><a href="JavaScript:autovisit(\''+key+'\')">AutoVisit</a><br/><br/><br/>');
-                }
-            }
-        });
-    }
-
-
-
-    $("button").click(function(){
-        $.get("login.php",
-    {
-        uname: $('#username').val(),
-        pass: $('#password').val()
-    },
-        function(data, status){
-            if(status=="success"){
-                data = JSON.parse(data);
-                if(data['code']=="0"){
-                    //console.log('jay');
-                    loadAllHero(data['ret']['key']);
-                }else{
-                    $('#response').text('Invalid User or Password.')
-                }
-            }
-        });
-    });
-});
+function autovisit(t){$("#visit").html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),setInterval(function(){$("#visit").html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),$("#visit").load("doVisit.php?key="+t)},5e3)}function autoarena(t,e){$("#arena"+e).attr("href","#"),$("#arena"+e).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),setInterval(function(){$("#arena"+e).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),$("#arena"+e).load("doArena.php?key="+t+"&hero="+e)},5e3)}function autovisity(t){$("#visit").html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),$("#visit").load("doVisit.php?key="+t)}function autoarenay(t,e){$("#arena"+e).attr("href","#"),$("#arena"+e).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">'),$("#arena"+e).load("doArena.php?key="+t+"&hero="+e)}$(document).ready(function(){function t(t){$.get("getHero.php",{key:t},function(e,r){if("success"==r&&(e=JSON.parse(e),"0"==e.code)){for(str="<table border=1 cellpading=0 cellspacing=0><tr><th>Name</th><th>Level</th><th>Attack</th><th>Wisdom</th><th>Defense</th><th>Loyalty</th><th>Vigor</th><th>Maxtroop</th><th>Action</th></tr>",ctr=0;ctr<e.ret.hero.length;ctr++)str+="<tr><td><img src=http://holycrusades.com/build/img/hero/"+e.ret.hero[ctr].gid+".jpg /></td><td>"+e.ret.hero[ctr].g+"</td><td>"+e.ret.hero[ctr].p+"</td><td>"+e.ret.hero[ctr].i+"</td><td>"+e.ret.hero[ctr].c1+"</td><td>"+e.ret.hero[ctr].f+"</td><td>"+e.ret.hero[ctr].e+"</td><td>"+e.ret.hero[ctr].c2+'</td><td><span id="arena'+ctr+'"><a href="JavaScript:autoarena(\''+t+"',"+ctr+')">AutoArena</a></span></td></tr>';str+="</table>",$("#heroList").html(str),$("#login").html(""),$("#response").text(""),$("#visit").html("<br/><br/><a href=\"JavaScript:autovisit('"+t+"')\">AutoVisit</a><br/><br/><br/>")}})}$("button").click(function(){$.get("login.php",{uname:$("#username").val(),pass:$("#password").val()},function(e,r){"success"==r&&(e=JSON.parse(e),"0"==e.code?t(e.ret.key):$("#response").text("Invalid User or Password."))})})});
 </script>
 </head>
 <body>

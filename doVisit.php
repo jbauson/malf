@@ -1,4 +1,11 @@
 <?php
+function d($array){
+	echo "<pre>";
+	print_r($array);
+	echo "</pre>";
+	die();
+}
+
 function stripTojSon($json,$time){
 	$jsonVar = "jsonp".$time."(";
 	$json = str_replace($jsonVar,"",$json);
@@ -131,4 +138,9 @@ if (strpos($getList['ret']['visited_list'],'e') !== false) {
 	goto clear;
 	}
 
+
+//d($_SERVER);
+//die("Location: ".$_SERVER['HTTP_REFERER'].$_SERVER['REQUEST_URI']);
+//header("Refresh: 5; URL=http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+//header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 ?>
