@@ -26,5 +26,8 @@ function autovisit(t){$("#visit").html('<br/><br/><img src="jquery/demos/css/the
 <div id="visit"></div>
 </center>
 
+<center><script type="text/javascript" src="http://widget.supercounters.com/flag.js"></script><script type="text/javascript">sc_flag(1196517,"FFFFFF","000000","cccccc",2,20,0,0)</script>
+</center>
+
 </body>
 </html>
