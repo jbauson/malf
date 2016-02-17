@@ -37,7 +37,7 @@ table {
     /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
     tr:nth-child(odd) td { background: #FEFEFE; }  
 
-    tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
+    /* tr td:hover { background: #666; color: #FFF; } Hover cell effect! */
 </style>
 <script>
 function autovisit(key){
@@ -45,6 +45,15 @@ function autovisit(key){
     setInterval(function(){
                 $('#visit').html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
                 $("#visit").load("doVisit.php?key="+key);
+            },5000);
+}
+
+function autoarena(key,hero){
+    $('#arena'+hero).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
+    setInterval(function(){
+                $('#arena'+hero).html('<img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
+                $('#arena'+hero).load("doArena.php?key="+key+"&hero="+hero);
+                //console.log('Got it!');
             },5000);
 }
 
@@ -59,13 +68,13 @@ $(document).ready(function(){
                     str = "<table border=1 cellpading=0 cellspacing=0><tr><th>Name</th><th>Level</th><th>Attack</th><th>Wisdom</th><th>Defense</th><th>Loyalty</th><th>Vigor</th><th>Maxtroop</th><th>Action</th></tr>";
                     for(ctr=0;ctr<data['ret']['hero'].length;ctr++){
                         //console.log(data['ret']['hero'][ctr]);
-                        str += "<tr><td><img src=http://holycrusades.com/build/img/hero/"+data['ret']['hero'][ctr]['gid']+".jpg /></td><td>"+data['ret']['hero'][ctr]['g']+"</td><td>"+data['ret']['hero'][ctr]['p']+"</td><td>"+data['ret']['hero'][ctr]['i']+"</td><td>"+data['ret']['hero'][ctr]['c1']+"</td><td>"+data['ret']['hero'][ctr]['f']+"</td><td>"+data['ret']['hero'][ctr]['e']+"</td><td>"+data['ret']['hero'][ctr]['c2']+"</td><td><a href=\"JavaScript:autoarena(\''+key+'\')\">AutoArena</a></td></tr>";
+                        str += "<tr><td><img src=http://holycrusades.com/build/img/hero/"+data['ret']['hero'][ctr]['gid']+".jpg /></td><td>"+data['ret']['hero'][ctr]['g']+"</td><td>"+data['ret']['hero'][ctr]['p']+"</td><td>"+data['ret']['hero'][ctr]['i']+"</td><td>"+data['ret']['hero'][ctr]['c1']+"</td><td>"+data['ret']['hero'][ctr]['f']+"</td><td>"+data['ret']['hero'][ctr]['e']+"</td><td>"+data['ret']['hero'][ctr]['c2']+"</td><td><a id=\"arena"+ctr+"\"href=\"JavaScript:autoarena(\'"+key+"\',"+ctr+")\">AutoArena</a></td></tr>";
                     } 
                     str+="</table>";
                     $('#heroList').html(str);
                     $('#login').html('');
                     $('#response').text('')
-                    $('#visit').html('<br/><br/><a href="JavaScript:autovisit(\''+key+'\')">AutoVisit</a>');
+                    $('#visit').html('<br/><br/><a href="JavaScript:autovisit(\''+key+'\')">AutoVisit</a><br/><br/><br/>');
                 }
             }
         });
@@ -96,7 +105,7 @@ $(document).ready(function(){
 </head>
 <body>
 <center>
-<div id="login">
+<div id="login"><br/><br/><br/>
     <input type="text"  id="username" name="username" placeholder="Username"><br/>
     <input type="password" id="password" name="password" placeholder="Password"><br/>
     <button>Login</button>
