@@ -6,13 +6,18 @@
 <script src="jquery/demos/js/jquery.js"></script>
 <script src="jquery/demos/_assets/js/index.js"></script>
 <script src="jquery/demos/js/jquery.mobile-1.4.5.min.js"></script>
+<style type="text/css">
+    .image {position: absolute;}
+    .imageOne {z-index: 0;}
+    .imageTwo {z-index: 1;}
+</style>
 <script>
 function autovisit(key){
     $('#visit').html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
     setInterval(function(){
                 $('#visit').html('<br/><br/><img src="jquery/demos/css/themes/default/images/ajax-loader.gif">');
                 $("#visit").load("doVisit.php?key="+key);
-            },3000);
+            },5000);
 }
 
 $(document).ready(function(){

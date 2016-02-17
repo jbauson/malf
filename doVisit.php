@@ -43,7 +43,7 @@ if(count($visitedList)==5){
 	if (!(strpos($var,'})') !== false)) {
 	    goto start;
 	}
-	echo "Claimed";
+	//echo "Claimed";
 }
 ###########################################################################################################################
 
@@ -70,17 +70,35 @@ if (!(strpos($var,'})') !== false)) {
 }
 ##################################################################################
 //echo $getList['ret']['visited_list'];
-echo "<br /><table><tr><td>";
-$ar = explode(",",$getList['ret']['visited_list']);
-for($jay=0;$jay<count($ar);$jay++){
-	$tmp = explode("|",$ar[$jay]);
-	//print_r($tmp);
-	# http://holycrusades.com/build/img/hero/b4.png
-	echo "<img src='http://holycrusades.com/build/img/hero/".$tmp[0].".jpg'/>&nbsp";
-	echo "<img src='http://holycrusades.com/build/img/hero/".$tmp[1].$tmp[2].".png'/>";
-	echo "<br/>";
+echo "<br /><table><tr>";
+//print_r($getList['ret']['can_visit_list']);
+echo "<br/>";
+
+$cvl = explode(",",$getList['ret']['can_visit_list']);
+for($jay=0;$jay<count($cvl);$jay++){
+	$tmp = explode("|",$cvl[$jay]);
+echo "<img src=\"http://holycrusades.com/build/img/hero/".$tmp[1].$tmp[2].".png\"/>&nbsp;&nbsp;";
 }
-echo "</td></tr></table>";
+
+echo "<br/>";
+if(strlen(trim($getList['ret']['visited_list']))>0){
+	$vl = explode(",",$getList['ret']['visited_list']);
+}
+else{
+	$vl = 0;
+}
+
+$total=0;
+if($vl!=0){
+	for($jay=0;$jay<count($vl);$jay++){
+		$tmp = explode("|",$vl[$jay]);
+	echo "<img src=\"http://holycrusades.com/build/img/hero/".$tmp[1].$tmp[2].".png\"/>&nbsp;&nbsp;";
+		$total++;
+	}
+}
+if($total==5){echo "<br/>Claimed!";}
+
+
 
 #if((strpos($getList['ret']['visited_list'],',,') !== false)){
 if(substr($getList['ret']['visited_list'], -1 )==","){
@@ -92,5 +110,18 @@ if(substr($getList['ret']['visited_list'], -1 )==","){
 	}
 	echo "Cleared";
 }
+
+if (strpos($getList['ret']['visited_list'],'a') !== false) {
+	goto clear;
+	}
+if (strpos($getList['ret']['visited_list'],'c') !== false) {
+	goto clear;
+	}
+if (strpos($getList['ret']['visited_list'],'d') !== false) {
+	goto clear;
+	}
+if (strpos($getList['ret']['visited_list'],'e') !== false) {
+	goto clear;
+	}
 
 ?>
